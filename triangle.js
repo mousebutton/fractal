@@ -1,16 +1,32 @@
 window.onload = () => {
     var canv = document.getElementById("canv");
+    var position = document.getElementById("position");
     var ctx = canv.getContext("2d");
 
+    function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+    canv.addEventListener('mousemove', function(evt) {
+        var mousePos = getMousePos(canv, evt);
+        position.innerHTML = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+    }, false);
+
+
     var trianglePositions = [];
-    trianglePositions.push({x: 275, y: 250});
-    trianglePositions.push({x: 375, y: 450});
-    trianglePositions.push({x: 75, y: 450});
+    trianglePositions.push({x: 375, y: 50});
+    trianglePositions.push({x: 675, y: 650});
+    trianglePositions.push({x: 75, y: 650});
 
-    // trianglePositions.push({x: 575, y: 50});
-    // trianglePositions.push({x: 675, y: 250});
-    // trianglePositions.push({x: 475, y: 250});
 
+    //Vierkant
+    // trianglePositions.push({x: 375, y: 50});
+    // trianglePositions.push({x: 675, y: 350});
+    // trianglePositions.push({x: 75, y: 350});
+    // trianglePositions.push({x: 275, y: 650});
     
     var pos = {x: 300, y: 300 };
 
@@ -32,23 +48,24 @@ window.onload = () => {
     }
 
     trianglePositions.forEach(el => {
-        ctx.fillRect(el.x, el.y, 3, 3);    
+        ctx.fillRect(el.x, el.y, 1, 1);    
     });
 
-    // var pos = {x: 150, y: 200};
-    // var speed = 1;
-    // var seconden = (1000 / speed) * 15;
-    // var interval = setInterval(function() {
+    var speed = 5;
+    var seconden = (1000 / speed) * 15;
+    var interval = setInterval(function() {
+        for(i = 0; i < 100; i++) {
+            putOnePoint();
+        }
+        
+        seconden--;
+        if(seconden < 0) {
+            clearInterval(interval);
+        }
+    }, speed);
+
+    // for(i = 0; i < 1000000; i++) {
     //     putOnePoint();
-
-    //     seconden--;
-    //     if(seconden < 0) {
-    //         clearInterval(interval);
-    //     }
-    // }, speed);
-
-    for(i = 0; i < 100000; i++) {
-        putOnePoint();
-    }
+    // }
 
 };
