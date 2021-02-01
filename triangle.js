@@ -22,11 +22,13 @@ window.onload = () => {
     trianglePositions.push({x: 75, y: 650});
 
 
-    //Vierkant
+    // //Vierkant
     // trianglePositions.push({x: 375, y: 50});
     // trianglePositions.push({x: 675, y: 350});
     // trianglePositions.push({x: 75, y: 350});
-    // trianglePositions.push({x: 275, y: 650});
+    // trianglePositions.push({x: 575, y: 650}); //3
+    // trianglePositions.push({x: 275, y: 750}); //4
+
     
     var pos = {x: 300, y: 300 };
 
@@ -64,7 +66,7 @@ window.onload = () => {
         }
     }, speed);
 
-    // for(i = 0; i < 1000000; i++) {
+    // for(i = 0; i < 300000; i++) {
     //     putOnePoint();
     // }
 
